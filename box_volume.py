@@ -15,13 +15,14 @@ def int_check(question, low_num, high_num):
 
 
 def volume_math (num1, num2, num3):
-    num1 * num2 * num3
+    volume = num1 * num2 * num3
+    print("the volume is {}".format(volume))
 
 
 # Ask for the dimensions
 height = int_check("Please enter the required height", 5, 100)
 width = int_check("Please enter the required width", 5, 100)
-depth = int_check("Please enter the required depth.", 5, 100)
+depth = int_check("Please enter the required depth", 5, 100)
 
-volume = volume_math(height, width, depth)
-print(volume)
+volume_math(height, width, depth)
+
