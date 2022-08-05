@@ -18,18 +18,21 @@ def int_check(question, low_num, high_num):
 def volume_math (num1, num2, num3):
     volume = num1 * num2 * num3
     print("The volume on this box is {}.".format(volume))
+    if volume <= 6000:
+        print("The base rate is $8.00")
+        base_rate = 8.00
+    elif 6000 < volume <= 100000:
+        print("The base rate is $12.00")
+        base_rate = 12.00
+    else:
+        print("The base rate is $15.00")
+        base_rate = 15.00
     return volume
-
+    return base_rate
 
 # Ask for the dimensions
 height = int_check("Please enter the required height.", 5, 100)
 width = int_check("Please enter the required width.", 5, 100)
 depth = int_check("Please enter the required depth.", 5, 100)
 
-
-if volume_math(height, width, depth) <= 6000:
-    print("The base rate is $8.00")
-elif 6000 < volume_math(height, width, depth) <= 100000:
-    print("The base rate is $12.00")
-else:
-    print("The base rate is $15.00")
+volume_math(height, width, depth)
