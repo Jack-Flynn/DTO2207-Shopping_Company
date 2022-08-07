@@ -25,11 +25,14 @@ def volume_math (num1, num2, num3):
 height = int_check("Please enter the required height.", 5, 100)
 width = int_check("Please enter the required width.", 5, 100)
 depth = int_check("Please enter the required depth.", 5, 100)
+volume_1 = volume_math(height, width, depth)
 
-
-if volume_math(height, width, depth) <= 6000:
+if volume_1 <= 6000:
     print("The base rate is $8.00")
-elif 6000 < volume_math(height, width, depth) <= 100000:
+    base_rate = 8.00
+elif 6000 < volume_1 <= 100000:
     print("The base rate is $12.00")
+    base_rate = 12.00
 else:
     print("The base rate is $15.00")
+    base_rate = 15.00
