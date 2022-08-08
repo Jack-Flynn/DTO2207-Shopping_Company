@@ -21,6 +21,7 @@ def volume_math (num1, num2, num3):
     return volume
 
 
+# Island of return math
 def island_of_return(question, num1):
     error = "Please enter either North, South or Stewart"
     while True:
@@ -28,17 +29,15 @@ def island_of_return(question, num1):
             response = input(question).title()
             if response == islands[0]:
                 print("There will be no difference to your base rate")
-                return response
+                return num1
             elif response == islands[1]:
                 print("The base rate has been multiplied by 1.5")
                 num1 = num1 * 1.5
-                print(num1)
-                return response
+                return num1
             elif response == islands[2]:
                 print("The base rate has been multiplied by 2")
                 num1 = num1 * 2
-                print(num1)
-                return response
+                return num1
             else:
                 print(error)
         except ValueError:
@@ -64,5 +63,4 @@ else:
 
 # Island of return
 islands = ['North', 'South', 'Stewart']
-island_of_return("What island are you shipping to?", base_rate)
-print(base_rate)
+print("The cost for shipping to this island is {}".format(island_of_return("What island are you shipping to?", base_rate)))
