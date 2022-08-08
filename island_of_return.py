@@ -53,14 +53,14 @@ volume_1 = volume_math(height, width, depth)
 # Working out the base rates
 if volume_1 <= 6000:
     print("The base rate is $8.00")
-    base_rate = 8.00
+    total_cost = 8.00
 elif 6000 < volume_1 <= 100000:
     print("The base rate is $12.00")
-    base_rate = 12.00
+    total_cost = 12.00
 else:
     print("The base rate is $15.00")
-    base_rate = 15.00
+    total_cost = 15.00
 
 # Island of return
 islands = ['North', 'South', 'Stewart']
-print("The cost for shipping to this island is {}".format(island_of_return("What island are you shipping to?", base_rate)))
+print("The cost for shipping to this island is {}".format(island_of_return("What island are you shipping to?", total_cost)))
