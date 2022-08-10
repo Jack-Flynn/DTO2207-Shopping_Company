@@ -1,16 +1,100 @@
-# This is a sample Python script.
+# High low checker
+def high_low_check(question, low_num, high_num):
+    error = "Your specified box is outside of our capabilities, please enter a whole number between {} and {}.".format(low_num, high_num)
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+    valid = False
+    while not valid:
+        try:
+            response = int(input(question))
+            if low_num <= response <= high_num:
+                return response
+            else:
+                print(error)
+        except ValueError:
+            print(error)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Finding the volume
+def volume_math (num1, num2, num3):
+    volume = num1 * num2 * num3
+    print("The volume on this box is {}cm3.".format(volume))
+    return volume
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+# Island of return math
+def island_of_return(question, num1):
+    error = "Please enter either North, South or Stewart"
+    while True:
+        try:
+            response = input(question).title().strip()
+            if response == islands[0]:
+                print("There will be no difference to your base rate")
+                return num1
+            elif response == islands[1]:
+                print("The base rate has been multiplied by 1.5")
+                num1 = num1 * 1.5
+                return num1
+            elif response == islands[2]:
+                print("The base rate has been multiplied by 2")
+                num1 = num1 * 2
+                return num1
+            else:
+                print(error)
+        except ValueError:
+            print(error)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+# Number checker
+def int_check(question):
+    error = "Please enter a number without any spaces"
+    valid = False
+    while not valid:
+        try:
+            response = int(input(question))
+            return response
+        except ValueError:
+            print(error)
+
+
+# Blank checker
+def blank_check(question):
+    valid = False
+    while not valid:
+        response = input(question).title().strip()
+        if response != "":
+            return response
+        else:
+            print("Your answer cannot be blank, please try again.")
+
+
+# Ask for the customer's name
+first_name = blank_check("What is your first name?")
+
+# Ask for the dimensions
+height = high_low_check("Hi {}, please enter the required height in centimetres.".format(first_name), 5, 100)
+width = high_low_check("Please enter the required width in centimetres.", 5, 100)
+depth = high_low_check("Please enter the required depth in centimetres.", 5, 100)
+volume_1 = volume_math(height, width, depth)
+
+# Working out the base rates
+if volume_1 <= 6000:
+    print("The base rate is $8.00")
+    total_cost = 8.00
+elif 6000 < volume_1 <= 100000:
+    print("The base rate is $12.00")
+    total_cost = 12.00
+else:
+    print("The base rate is $15.00")
+    total_cost = 15.00
+
+# Island of return
+islands = ['North', 'South', 'Stewart']
+
+# Customer details
+
+last_name = blank_check("What is your last name?")
+address = blank_check("What is your address?")
+phone_number = int_check("What is your phone number?")
+details = [first_name, last_name, address, phone_number]
+print("Thank you {} {} who lives at {} with the phone number {}, the cost for this is {}"
+      .format(details[0], details[1], details[2], details[3], island_of_return("What island are you shipping to?", total_cost)))
