@@ -26,7 +26,7 @@ def island_of_return(question, num1):
     error = "Please enter either North, South or Stewart"
     while True:
         try:
-            response = input(question).title()
+            response = input(question).title().strip()
             if response == islands[0]:
                 print("There will be no difference to your base rate")
                 return num1
@@ -51,12 +51,19 @@ def int_check(question):
     while not valid:
         try:
             response = int(input(question))
-            if response.isdigit():
-                return response
-            else:
-                print(error)
+            return response
         except ValueError:
             print(error)
+
+
+def blank_check(question):
+    valid = False
+    while not valid:
+        response = input(question).title().strip()
+        if response != "":
+            return response
+        else:
+            print("Your answer cannot be blank, please try again.")
 
 
 # Ask for the dimensions
@@ -78,12 +85,12 @@ else:
 
 # Island of return
 islands = ['North', 'South', 'Stewart']
-print("The cost for shipping to this island is {}".format(island_of_return("What island are you shipping to?", total_cost)))
 
 # Customer details
-first_name = input("what is your first name?")
-last_name = input("what is your last name?")
-address = input("what is your address?")
-phone_number = int_check("what is your phone number?")
+first_name = blank_check("What is your first name?")
+last_name = blank_check("What is your last name?")
+address = blank_check("What is your address?")
+phone_number = int_check("What is your phone number?")
 details = [first_name, last_name, address, phone_number]
-print("Thank you {} {} who lives at {} with the phone number {}, the cost for this is {}".format(first_name, last_name, address, phone_number, total_cost))
+print("Thank you {} {} who lives at {} with the phone number {}, the cost for this is {}"
+      .format(details[0], details[1], details[2], details[3], island_of_return("What island are you shipping to?", total_cost)))
