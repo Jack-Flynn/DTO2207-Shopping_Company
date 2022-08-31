@@ -46,12 +46,15 @@ def island_of_return(question, num1):
 
 # Number checker
 def int_check(question):
-    error = "Please enter a number without any spaces"
+    error = "Please enter a number (8 digits or more) without any spaces"
     valid = False
     while not valid:
         try:
             response = int(input(question))
-            return response
+            if response < 10000000:
+                print(error)
+            else:
+                return response
         except ValueError:
             print(error)
 

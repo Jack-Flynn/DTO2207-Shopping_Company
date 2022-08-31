@@ -46,12 +46,15 @@ def island_of_return(question, num1):
 
 # Number checker
 def int_check(question):
-    error = "Please enter a number (more than 8 digits) without any spaces"
+    error = "Please enter a number (8 digits or more) without any spaces"
     valid = False
     while not valid:
         try:
             response = int(input(question))
-            return response
+            if response < 10000000:
+                print(error)
+            else:
+                return response
         except ValueError:
             print(error)
 
@@ -98,4 +101,4 @@ phone_number = int_check("What is your phone number?")
 details = [first_name, last_name, address, phone_number]
 print("Thank you {} {} who lives at {} with the phone number {}, the cost for this is ${} NZD"
       .format(details[0], details[1], details[2], details[3], island_of_return("""What island are you shipping to?
-       (either North, South or Stewart)""", total_cost)))
+(Either North, South or Stewart)""", total_cost)))
