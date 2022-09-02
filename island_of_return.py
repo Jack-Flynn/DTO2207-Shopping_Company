@@ -63,4 +63,6 @@ else:
 
 # Island of return
 islands = ['North', 'South', 'Stewart']
-print("The cost for shipping to this island is {}".format(island_of_return("What island are you shipping to?", total_cost)))
+
+print("The cost for shipping to this island is ${}".format(island_of_return("""What island are you shipping to?
+(Either North, South or Stewart)""", total_cost)))
