@@ -1,3 +1,5 @@
+# Functions go here
+
 # High low checker
 def high_low_check(question, low_num, high_num):
     error = "Your specified box is outside of our capabilities, please enter a whole number between {} and {}.".format(low_num, high_num)
@@ -70,13 +72,16 @@ def blank_check(question):
             print("Your answer cannot be blank, please try again.")
 
 
+# Main routine starts here
+
 # Ask for the customer's name
 first_name = blank_check("What is your first name?")
+print("Welcome to ONLINZ, {}! Let's get you started with your first box.".format(first_name))
 
 # Ask for the dimensions
-height = high_low_check("Hi {}, please enter the required height in centimetres.".format(first_name), 5, 100)
-width = high_low_check("Please enter the required width in centimetres.", 5, 100)
-depth = high_low_check("Please enter the required depth in centimetres.", 5, 100)
+height = high_low_check("Ok, {}, please enter the required height in centimetres.".format(first_name), 5, 100)
+width = high_low_check("Now enter the required width in centimetres.", 5, 100)
+depth = high_low_check("And finally enter the required depth in centimetres.", 5, 100)
 volume_1 = volume_math(height, width, depth)
 
 # Working out the base rates
@@ -95,6 +100,7 @@ islands = ['North', 'South', 'Stewart']
 
 # Customer details
 
+print("Now we just need some extra details for if you ever decide to use us in the future.")
 last_name = blank_check("What is your last name?")
 address = blank_check("What is your address?")
 phone_number = int_check("What is your phone number?")
